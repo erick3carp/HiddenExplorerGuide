@@ -5,6 +5,7 @@ const path = require('path');
 const root = process.cwd();
 const appRoot = path.join(root, '.next', 'server', 'app');
 const staticRoot = path.join(root, '.next', 'static');
+const publicRoot = path.join(root, 'public');
 
 const types = {
   '.html': 'text/html; charset=utf-8',
@@ -51,19 +52,24 @@ function pageFile(urlPath) {
 
 http
   .createServer((req, res) => {
-    const urlPath = decodeURIComponent(req.url.split('?')[0]);
+    const requestUrl = new URL(req.url, 'http://localhost:3000');
+    const urlPath = decodeURIComponent(requestUrl.pathname);
+
+    if (urlPath.startsWith('/_next/static/')) {
+      send(res, path.join(staticRoot, urlPath.replace('/_next/static/', '')));
+      return;
+    }
 
     if (urlPath === '/_next/image') {
-      const imageUrl = new URL(req.url, 'http://localhost:3000').searchParams.get('url');
-      if (imageUrl) {
-        res.writeHead(302, { Location: imageUrl });
-        res.end();
+      const imageUrl = requestUrl.searchParams.get('url');
+      if (imageUrl && imageUrl.startsWith('/')) {
+        send(res, path.join(publicRoot, imageUrl));
         return;
       }
     }
 
-    if (urlPath.startsWith('/_next/static/')) {
-      send(res, path.join(staticRoot, urlPath.replace('/_next/static/', '')));
+    if (urlPath.startsWith('/photos/')) {
+      send(res, path.join(publicRoot, urlPath));
       return;
     }
 

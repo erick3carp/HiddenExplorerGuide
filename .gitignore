@@ -1,8 +1,23 @@
+# Dependencies and Next.js output
 node_modules/
 .next/
 out/
-.env.local
-.env*.local
-.vercel/
+
+# Local environment files. Keep the documented template tracked.
+.env*
+!.env.example
+
+# Test output
+coverage/
 playwright-report/
 test-results/
+
+# Hosting and monitoring credentials
+.vercel/
+.sentryclirc
+sentry.properties
+
+# Logs and operating-system files
+*.log
+.DS_Store
+Thumbs.db
