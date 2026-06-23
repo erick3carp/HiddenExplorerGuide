@@ -734,57 +734,63 @@ img {
 
 .map-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
 
-.map-item {
+.map-preview-card {
+  overflow: hidden;
   border: 1px solid #d8dee4;
-  border-radius: 1rem;
+  border-radius: 6px;
   background: #ffffff;
-  padding: 1.4rem;
-  text-decoration: none;
   color: #001f33;
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.map-item:hover {
+.map-preview-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
 }
 
-.map-item-label {
+.map-preview-image {
   display: block;
-  margin-bottom: 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--coast);
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
 }
 
-.map-item strong {
-  display: block;
+.map-preview-body {
+  display: grid;
+  justify-items: start;
+  gap: 0.85rem;
+  padding: 1.1rem;
+}
+
+.map-preview-body h3 {
+  margin: 0;
   font-size: 1.2rem;
   line-height: 1.25;
 }
 
-.map-item span:last-child {
-  display: block;
-  margin-top: 1rem;
-  color: #475569;
-  font-weight: 700;
+.map-preview-link {
+  color: var(--coast);
+  font-weight: 800;
+  text-decoration: none;
 }
 
-@media (max-width: 900px) {
+.map-preview-link:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 641px) {
   .map-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 640px) {
+@media (min-width: 901px) {
   .map-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
