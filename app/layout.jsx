@@ -1,6 +1,7 @@
 import './globals.css';
 import 'leaflet/dist/leaflet.css';
 import Link from 'next/link';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata = {
   title: 'Hidden Explorer Guide',
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
             <span>New Smyrna Beach MVP · 2026</span>
           </div>
         </footer>
+        <SpeedInsights />
       </body>
     </html>
   );
