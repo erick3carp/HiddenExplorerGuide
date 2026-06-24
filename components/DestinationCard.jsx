@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import CategoryBadge from './CategoryBadge';
+import DestinationImage from './DestinationImage';
 
 export default function DestinationCard({ destination }) {
   return (
     <Link href={`/destination/${destination.slug}`} className="card">
       <div className="card-media">
-        <img src={destination.featuredImage} alt={destination.name} />
+        <DestinationImage src={destination.featuredImage} alt={destination.name} />
       </div>
       <div className="card-body">
         <div className="card-title">

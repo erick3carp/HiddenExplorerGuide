@@ -53,6 +53,21 @@ export default function DestinationMap({ destinations }) {
         <span>{filtered.length} pins shown</span>
       </div>
 
+      {filtered.length === 0 && (
+        <div className="side-panel" role="status">
+          <h2>No destinations in this category yet</h2>
+          <p>Choose another category or show every destination currently available on the map.</p>
+          <button
+            className="button"
+            type="button"
+            onClick={() => setCategory('All')}
+            style={{ marginTop: 16 }}
+          >
+            Show all destinations
+          </button>
+        </div>
+      )}
+
       <div className="map-shell">
         <MapContainer center={center} zoom={12} scrollWheelZoom={false} className="leaflet-map">
           <TileLayer
