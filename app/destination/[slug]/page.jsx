@@ -27,7 +27,14 @@ export default function DestinationPage({ params }) {
   return (
     <main>
       <section className="profile-hero">
-        <DestinationImage className="hero-img" src={destination.featuredImage} alt={destination.name} />
+        <DestinationImage
+          className="hero-img"
+          src={destination.featuredImage}
+          alt={destination.name}
+          fill
+          priority
+          sizes="100vw"
+        />
         <div className="hero-overlay" />
         <div className="hero-content">
           <CategoryBadge category={destination.category} />
@@ -64,6 +71,7 @@ export default function DestinationPage({ params }) {
                 src={image}
                 alt={`${destination.name} photo ${index + 1}`}
                 key={`${image || 'missing'}-${index}`}
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
             ))}
           </div>

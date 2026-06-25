@@ -1,8 +1,21 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-export default function DestinationImage({ src, alt, className = '' }) {
+const DEFAULT_IMAGE_SIZE = {
+  width: 1600,
+  height: 1200,
+};
+
+export default function DestinationImage({
+  src,
+  alt,
+  className = '',
+  sizes,
+  priority = false,
+  fill = false,
+}) {
   const [failed, setFailed] = useState(!src);
 
   useEffect(() => {
@@ -21,11 +34,16 @@ export default function DestinationImage({ src, alt, className = '' }) {
     );
   }
 
+  const imageProps = fill ? { fill: true } : DEFAULT_IMAGE_SIZE;
+
   return (
-    <img
+    <Image
+      {...imageProps}
       className={className || undefined}
       src={src}
       alt={alt}
+      sizes={sizes}
+      priority={priority}
       onError={() => setFailed(true)}
     />
   );

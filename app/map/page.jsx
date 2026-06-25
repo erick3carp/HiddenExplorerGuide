@@ -35,6 +35,7 @@ export default function MapPage() {
                   className="map-preview-image"
                   src={destination.featuredImage}
                   alt=""
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="map-preview-body">
                   <CategoryBadge category={destination.category} />
