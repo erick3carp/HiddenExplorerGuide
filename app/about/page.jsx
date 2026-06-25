@@ -89,13 +89,15 @@ export default function AboutPage() {
             have photos, useful context, and enough detail to help someone decide whether it belongs in their day.
           </p>
         </div>
-        <Image
-          src="/photos/plantation-sugar-mill-ruins/hero-ruins.JPG"
-          alt="Sugar Mill Ruins surrounded by greenery"
-          width={2400}
-          height={1800}
-          sizes="(max-width: 768px) 100vw, 45vw"
-        />
+        <div className="about-story-image-frame">
+          <Image
+            className="about-story-image"
+            src="/photos/plantation-sugar-mill-ruins/hero-ruins.JPG"
+            alt="Sugar Mill Ruins surrounded by greenery"
+            fill
+            sizes="(max-width: 768px) 100vw, 45vw"
+          />
+        </div>
       </section>
 
       <section className="container about-section about-vision">

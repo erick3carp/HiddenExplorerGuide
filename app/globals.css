@@ -419,19 +419,21 @@ img {
   gap: 14px;
 }
 
-.gallery img {
-  width: 100%;
+.gallery-image-frame {
+  position: relative;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: #fff;
 }
 
-.gallery .image-placeholder {
-  aspect-ratio: 4 / 3;
-  border: 1px solid var(--line);
-  border-radius: 6px;
+.gallery-image {
+  object-fit: cover;
+}
+
+.gallery-image-frame .image-placeholder {
+  min-height: 0;
 }
 
 .side-panel {
@@ -533,13 +535,18 @@ img {
   gap: 16px;
 }
 
-.about-story img {
+.about-story-image-frame {
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: #fff;
+}
+
+.about-story-image {
+  object-fit: cover;
 }
 
 .about-vision {
@@ -773,10 +780,15 @@ img {
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
 }
 
-.map-preview-image {
-  display: block;
+.map-preview-image-frame {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #e7e1d7;
+}
+
+.map-preview-image {
   object-fit: cover;
 }
 

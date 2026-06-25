@@ -79,6 +79,7 @@ export default function DestinationMap({ destinations }) {
               icon={markerIcon(destination.category)}
               key={destination.id}
               position={[destination.latitude, destination.longitude]}
+              title={destination.name}
             >
               <Popup>
                 <div className="map-popup">

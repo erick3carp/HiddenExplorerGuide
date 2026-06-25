@@ -67,12 +67,15 @@ export default function DestinationPage({ params }) {
           <h2>Photo gallery</h2>
           <div className="gallery">
             {gallery.map((image, index) => (
-              <DestinationImage
-                src={image}
-                alt={`${destination.name} photo ${index + 1}`}
-                key={`${image || 'missing'}-${index}`}
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
+              <div className="gallery-image-frame" key={`${image || 'missing'}-${index}`}>
+                <DestinationImage
+                  className="gallery-image"
+                  src={image}
+                  alt={`${destination.name} photo ${index + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
             ))}
           </div>
         </div>

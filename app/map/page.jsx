@@ -31,12 +31,15 @@ export default function MapPage() {
           <div className="map-list">
             {publishedDestinations.map((destination) => (
               <article className="map-preview-card" key={destination.id}>
-                <DestinationImage
-                  className="map-preview-image"
-                  src={destination.featuredImage}
-                  alt=""
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
+                <div className="map-preview-image-frame">
+                  <DestinationImage
+                    className="map-preview-image"
+                    src={destination.featuredImage}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
                 <div className="map-preview-body">
                   <CategoryBadge category={destination.category} />
                   <h3>{destination.name}</h3>
