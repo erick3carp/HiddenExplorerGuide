@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@sentry/nextjs": "^10.59.0",
+    "@vercel/speed-insights": "^2.0.0",
     "leaflet": "^1.9.4",
     "next": "^14.2.35",
     "react": "^18.3.1",

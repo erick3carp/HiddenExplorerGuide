@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import CategoryBadge from '../../../components/CategoryBadge';
+import DestinationImage from '../../../components/DestinationImage';
 import { destinations, getDestination } from '../../../lib/destinations';
 
 export function generateStaticParams() {
@@ -26,7 +27,14 @@ export default function DestinationPage({ params }) {
   return (
     <main>
       <section className="profile-hero">
-        <img className="hero-img" src={destination.featuredImage} alt={destination.name} />
+        <DestinationImage
+          className="hero-img"
+          src={destination.featuredImage}
+          alt={destination.name}
+          fill
+          priority
+          sizes="100vw"
+        />
         <div className="hero-overlay" />
         <div className="hero-content">
           <CategoryBadge category={destination.category} />
@@ -58,8 +66,16 @@ export default function DestinationPage({ params }) {
 
           <h2>Photo gallery</h2>
           <div className="gallery">
-            {gallery.map((image) => (
-              <img src={image} alt={`${destination.name} photo`} key={image} />
+            {gallery.map((image, index) => (
+              <div className="gallery-image-frame" key={`${image || 'missing'}-${index}`}>
+                <DestinationImage
+                  className="gallery-image"
+                  src={image}
+                  alt={`${destination.name} photo ${index + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
             ))}
           </div>
         </div>

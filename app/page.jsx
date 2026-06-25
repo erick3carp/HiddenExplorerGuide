@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import DestinationCard from '../components/DestinationCard';
 import { publishedDestinations } from '../lib/destinations';
 
@@ -8,7 +9,14 @@ export default function HomePage() {
   return (
     <main>
       <section className="hero">
-        <img className="hero-img" src="/photos/grayce-kenemer-barck-north-brach/hero-beach.jpg" alt="New Smyrna Beach shoreline" />
+        <Image
+          className="hero-img"
+          src="/photos/grayce-kenemer-barck-north-brach/hero-beach.jpg"
+          alt="New Smyrna Beach shoreline"
+          fill
+          priority
+          sizes="100vw"
+        />
         <div className="hero-overlay" />
         <div className="hero-content">
           <div>

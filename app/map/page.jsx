@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import MapLoader from '../../components/MapLoader';
 import CategoryBadge from '../../components/CategoryBadge';
+import DestinationImage from '../../components/DestinationImage';
 import { publishedDestinations } from '../../lib/destinations';
 
 export default function MapPage() {
@@ -21,29 +22,38 @@ export default function MapPage() {
           </p>
         </div>
 
-        <div className="map-list">
-          {publishedDestinations.map((destination) => (
-            <article className="map-preview-card" key={destination.id}>
-              {destination.featuredImage && (
-                <img
-                  className="map-preview-image"
-                  src={destination.featuredImage}
-                  alt=""
-                />
-              )}
-              <div className="map-preview-body">
-                <CategoryBadge category={destination.category} />
-                <h3>{destination.name}</h3>
-                <Link
-                  className="map-preview-link"
-                  href={`/destination/${destination.slug}`}
-                >
-                  View Guide &rarr;
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
+        {publishedDestinations.length === 0 ? (
+          <div className="side-panel" role="status">
+            <h3>No destinations available yet</h3>
+            <p>New places will appear here as they are added to the guide.</p>
+          </div>
+        ) : (
+          <div className="map-list">
+            {publishedDestinations.map((destination) => (
+              <article className="map-preview-card" key={destination.id}>
+                <div className="map-preview-image-frame">
+                  <DestinationImage
+                    className="map-preview-image"
+                    src={destination.featuredImage}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="map-preview-body">
+                  <CategoryBadge category={destination.category} />
+                  <h3>{destination.name}</h3>
+                  <Link
+                    className="map-preview-link"
+                    href={`/destination/${destination.slug}`}
+                  >
+                    View Guide &rarr;
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );

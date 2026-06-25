@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function AboutPage() {
   const values = [
     {
@@ -35,7 +37,15 @@ export default function AboutPage() {
   return (
     <main>
       <section className="about-hero">
-        <img className="hero-img about-hero-img" src="/photos/canal-st-historic/hero-canal-st.jpg" alt="Historic street in New Smyrna Beach" />
+        <Image
+          className="hero-img about-hero-img"
+          src="/photos/canal-st-historic/hero-canal-st.jpg"
+          alt="Historic street in New Smyrna Beach"
+          width={2400}
+          height={1800}
+          priority
+          sizes="100vw"
+        />
         <div className="hero-overlay" />
         <div className="about-hero-content">
           <p className="eyebrow">About Hidden Explorer Guide</p>
@@ -79,7 +89,15 @@ export default function AboutPage() {
             have photos, useful context, and enough detail to help someone decide whether it belongs in their day.
           </p>
         </div>
-        <img src="/photos/plantation-sugar-mill-ruins/hero-ruins.JPG" alt="Sugar Mill Ruins surrounded by greenery" />
+        <div className="about-story-image-frame">
+          <Image
+            className="about-story-image"
+            src="/photos/plantation-sugar-mill-ruins/hero-ruins.JPG"
+            alt="Sugar Mill Ruins surrounded by greenery"
+            fill
+            sizes="(max-width: 768px) 100vw, 45vw"
+          />
+        </div>
       </section>
 
       <section className="container about-section about-vision">

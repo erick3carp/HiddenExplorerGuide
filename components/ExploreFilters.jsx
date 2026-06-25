@@ -44,11 +44,28 @@ export default function ExploreFilters({ destinations }) {
         <span>{filtered.length} locations found</span>
         <span>New Smyrna Beach only</span>
       </div>
-      <div className="grid">
-        {filtered.map((destination) => (
-          <DestinationCard destination={destination} key={destination.id} />
-        ))}
-      </div>
+      {filtered.length === 0 ? (
+        <div className="side-panel" role="status">
+          <h2>No destinations found</h2>
+          <p>Try a different search or clear the current filters to see every destination.</p>
+          <button
+            className="button"
+            type="button"
+            onClick={() => {
+              setQuery('');
+              setCategory('All');
+            }}
+          >
+            Clear filters
+          </button>
+        </div>
+      ) : (
+        <div className="grid">
+          {filtered.map((destination) => (
+            <DestinationCard destination={destination} key={destination.id} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
