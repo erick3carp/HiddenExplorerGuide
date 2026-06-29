@@ -1,6 +1,7 @@
 import './globals.css';
 import 'leaflet/dist/leaflet.css';
 import Link from 'next/link';
+import Script from 'next/script';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { defaultDescription, defaultOgImage, metadataBase, siteName } from '../lib/seo';
 
@@ -38,6 +39,8 @@ const navItems = [
   { href: '/about', label: 'About' },
 ];
 
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -65,6 +68,22 @@ export default function RootLayout({ children }) {
           </div>
         </footer>
         <SpeedInsights />
+        {gaMeasurementId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', ${JSON.stringify(gaMeasurementId)});
+              `}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );
