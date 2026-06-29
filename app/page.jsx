@@ -19,7 +19,7 @@ export default function HomePage() {
       <section className="hero">
         <Image
           className="hero-img"
-          src="/photos/grayce-kenemer-barck-north-brach/hero-beach.jpg"
+          src="/photos/grayce-kenemer-barck-north-beach/hero-beach.jpg"
           alt="New Smyrna Beach shoreline"
           fill
           priority
