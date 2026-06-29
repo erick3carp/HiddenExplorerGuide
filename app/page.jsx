@@ -2,6 +2,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import DestinationCard from '../components/DestinationCard';
 import { publishedDestinations } from '../lib/destinations';
+import { createPageMetadata, siteName } from '../lib/seo';
+
+export const metadata = createPageMetadata({
+  title: siteName,
+  description:
+    'Explore authentic New Smyrna Beach destinations with local photography, field notes, and map-first planning.',
+  path: '/',
+});
 
 export default function HomePage() {
   const featured = publishedDestinations.slice(0, 3);

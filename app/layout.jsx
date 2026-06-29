@@ -2,10 +2,33 @@ import './globals.css';
 import 'leaflet/dist/leaflet.css';
 import Link from 'next/link';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { defaultDescription, defaultOgImage, metadataBase, siteName } from '../lib/seo';
 
 export const metadata = {
-  title: 'Hidden Explorer Guide',
-  description: 'Authentic New Smyrna Beach destinations through local photography and field-tested guides.',
+  metadataBase,
+  title: {
+    default: siteName,
+    template: `%s | ${siteName}`,
+  },
+  description: defaultDescription,
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: siteName,
+    description: defaultDescription,
+    url: '/',
+    siteName,
+    images: [defaultOgImage],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteName,
+    description: defaultDescription,
+    images: [defaultOgImage.url],
+  },
 };
 
 const navItems = [

@@ -3,6 +3,14 @@ import MapLoader from '../../components/MapLoader';
 import CategoryBadge from '../../components/CategoryBadge';
 import DestinationImage from '../../components/DestinationImage';
 import { publishedDestinations } from '../../lib/destinations';
+import { createPageMetadata } from '../../lib/seo';
+
+export const metadata = createPageMetadata({
+  title: 'Map',
+  description:
+    'Plan New Smyrna Beach stops with the Hidden Explorer Guide interactive map and destination profiles.',
+  path: '/map',
+});
 
 export default function MapPage() {
   return (
