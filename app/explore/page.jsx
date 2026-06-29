@@ -1,5 +1,13 @@
 import ExploreFilters from '../../components/ExploreFilters';
 import { publishedDestinations } from '../../lib/destinations';
+import { createPageMetadata } from '../../lib/seo';
+
+export const metadata = createPageMetadata({
+  title: 'Explore New Smyrna Beach',
+  description:
+    'Search and filter New Smyrna Beach beaches, parks, restaurants, photo spots, nature stops, and family-friendly places.',
+  path: '/explore',
+});
 
 export default function ExplorePage() {
   return (

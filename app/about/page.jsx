@@ -1,4 +1,12 @@
 import Image from 'next/image';
+import { createPageMetadata } from '../../lib/seo';
+
+export const metadata = createPageMetadata({
+  title: 'About',
+  description:
+    'Learn how Hidden Explorer Guide helps travelers discover photo-ready places, quiet corners, and local stories around New Smyrna Beach.',
+  path: '/about',
+});
 
 export default function AboutPage() {
   const values = [
