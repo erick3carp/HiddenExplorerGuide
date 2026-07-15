@@ -107,7 +107,7 @@ export default function DestinationPage({ params }) {
 
   const gallery = destination.gallery?.length ? destination.gallery : [destination.featuredImage];
   const jsonLd = buildDestinationJsonLd(destination);
-  const mapQuery = destination.address ?? `${destination.latitude},${destination.longitude}`;
+  const mapQuery = destination.mapQuery ?? destination.address ?? `${destination.latitude},${destination.longitude}`;
   const googleMapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}`;
 
   return (

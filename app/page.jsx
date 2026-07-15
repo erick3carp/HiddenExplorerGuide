@@ -12,7 +12,15 @@ export const metadata = createPageMetadata({
 });
 
 export default function HomePage() {
-  const featured = publishedDestinations.slice(0, 3);
+  const featuredDestinationNames = [
+    'Canal Street Historic District',
+    'Mary McLeod Bethune Beach Park',
+    'Sugar Mill Ruins',
+    'The Eldora Statehouse',
+  ];
+  const featured = featuredDestinationNames
+    .map((name) => publishedDestinations.find((destination) => destination.name === name))
+    .filter(Boolean);
 
   return (
     <main>
@@ -48,9 +56,9 @@ export default function HomePage() {
         <div className="section-head">
           <div>
             <p className="eyebrow">Start here</p>
-            <h2>Featured field notes</h2>
+            <h2>Featured Destinations</h2>
           </div>
-          <Link href="/destinations">View all destinations</Link>
+          <Link href="/explore">Explore all locations</Link>
         </div>
         <div className="grid">
           {featured.map((destination) => (

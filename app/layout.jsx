@@ -33,8 +33,8 @@ export const metadata = {
 };
 
 const navItems = [
+  { href: '/', label: 'Home' },
   { href: '/explore', label: 'Explore' },
-  { href: '/destinations', label: 'Destinations' },
   { href: '/map', label: 'Map' },
   { href: '/about', label: 'About' },
 ];
@@ -63,8 +63,8 @@ export default function RootLayout({ children }) {
         {children}
         <footer className="footer">
           <div className="footer-inner">
-            <span>Hidden Explorer Guide helps travelers discover authentic places through local photography and guides.</span>
-            <span>New Smyrna Beach MVP · 2026</span>
+            <span>Helping people discover local destinations through trusted guides, original photography, and practical travel information.</span>
+            <span>&copy; 2026 Hidden Explorer Guide &bull; Explore Local</span>
           </div>
         </footer>
         <SpeedInsights />

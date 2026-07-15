@@ -9,39 +9,6 @@ export const metadata = createPageMetadata({
 });
 
 export default function AboutPage() {
-  const values = [
-    {
-      icon: '01',
-      title: 'Local Finds',
-      text: 'Places chosen for character, atmosphere, and real reasons to visit.',
-    },
-    {
-      icon: '02',
-      title: 'Photo First',
-      text: 'Every public guide entry is shaped around useful visuals and on-location details.',
-    },
-    {
-      icon: '03',
-      title: 'Quiet Corners',
-      text: 'A focus on parks, streets, food spots, and overlooked stops beyond the obvious.',
-    },
-    {
-      icon: '04',
-      title: 'Simple Planning',
-      text: 'Fast profiles, map links, and practical notes help turn curiosity into a stop.',
-    },
-    {
-      icon: '05',
-      title: 'Honest Context',
-      text: 'Each place is described with clear expectations, timing, parking, and photo tips.',
-    },
-    {
-      icon: '06',
-      title: 'Growing Guide',
-      text: 'New destinations stay behind the scenes until the photos and details are ready.',
-    },
-  ];
-
   return (
     <main>
       <section className="about-hero">
@@ -63,24 +30,14 @@ export default function AboutPage() {
 
       <section className="container about-section">
         <p className="eyebrow">Mission</p>
-        <h2>Make local exploring easier, richer, and more visual.</h2>
+        <h2>Discover more. Explore local.</h2>
         <p className="lead">
-          Hidden Explorer Guide helps people discover photo-ready places around New Smyrna Beach with practical details,
-          honest descriptions, and a map-first way to plan. The goal is to highlight the parks, streets, food stops,
-          historic corners, and quiet views that make a trip feel personal.
+          Hidden Explorer Guide exists to help people discover and explore the places that make every community unique.
+           Our mission is to be a trusted guide for local exploration by providing practical information, 
+           honest recommendations, beautiful photography, and local insights that help visitors and residents
+            confidently explore parks, beaches, trails, historic sites, downtown districts, scenic viewpoints,
+             and hidden gems—one destination at a time.
         </p>
-      </section>
-
-      <section className="container about-section">
-        <div className="about-card-grid">
-          {values.map((value) => (
-            <article className="about-icon-card" key={value.title}>
-              <span className="about-card-icon">{value.icon}</span>
-              <h3>{value.title}</h3>
-              <p>{value.text}</p>
-            </article>
-          ))}
-        </div>
       </section>
 
       <section className="container about-story">

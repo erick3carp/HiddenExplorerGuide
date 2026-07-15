@@ -5,7 +5,6 @@ const staticRoutes = [
   { path: '/', changeFrequency: 'weekly', priority: 1 },
   { path: '/about', changeFrequency: 'monthly', priority: 0.6 },
   { path: '/explore', changeFrequency: 'weekly', priority: 0.9 },
-  { path: '/destinations', changeFrequency: 'weekly', priority: 0.9 },
   { path: '/map', changeFrequency: 'weekly', priority: 0.8 },
 ];
 
@@ -19,7 +18,6 @@ export default function sitemap() {
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
-
   return [...staticRoutes, ...destinationRoutes].map((route) => ({
     url: absoluteUrl(route.path),
     lastModified: new Date(),
