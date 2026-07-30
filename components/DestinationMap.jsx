@@ -29,41 +29,69 @@ function markerIcon(category) {
 }
 
 export default function DestinationMap({ destinations }) {
+  const [city, setCity] = useState('All Cities');
   const [category, setCategory] = useState('All');
 
+  const cityOptions = useMemo(() => {
+    return Array.from(new Set(destinations.map((destination) => destination.city))).sort();
+  }, [destinations]);
+
   const filtered = useMemo(() => {
-    return destinations.filter((destination) => category === 'All' || destination.category === category);
-  }, [category, destinations]);
+    return destinations.filter((destination) => {
+      const cityMatch = city === 'All Cities' || destination.city === city;
+      const categoryMatch = category === 'All' || destination.category === category;
+      return cityMatch && categoryMatch;
+    });
+  }, [category, city, destinations]);
+
+  const pinLabel = `${filtered.length} ${filtered.length === 1 ? 'pin' : 'pins'} shown`;
 
   return (
     <section className="map-experience" aria-label="Destination map">
       <div className="map-toolbar">
-        <div className="chips" aria-label="Map category filters">
-          {['All', ...categories].map((item) => (
-            <button
-              className={`chip ${category === item ? 'active' : ''}`}
-              key={item}
-              type="button"
-              onClick={() => setCategory(item)}
-            >
-              {item}
-            </button>
-          ))}
+        <div>
+          <div className="chips" aria-label="Map city filters">
+            {['All Cities', ...cityOptions].map((item) => (
+              <button
+                className={`chip ${city === item ? 'active' : ''}`}
+                key={item}
+                type="button"
+                onClick={() => setCity(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+          <div className="chips" aria-label="Map category filters">
+            {['All', ...categories].map((item) => (
+              <button
+                className={`chip ${category === item ? 'active' : ''}`}
+                key={item}
+                type="button"
+                onClick={() => setCategory(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
-        <span>{filtered.length} pins shown</span>
+        <span>{pinLabel}</span>
       </div>
 
       {filtered.length === 0 && (
         <div className="side-panel" role="status">
-          <h2>No destinations in this category yet</h2>
-          <p>Choose another category or show every destination currently available on the map.</p>
+          <h2>No places found</h2>
+          <p>Try changing your city or category filters.</p>
           <button
             className="button"
             type="button"
-            onClick={() => setCategory('All')}
+            onClick={() => {
+              setCity('All Cities');
+              setCategory('All');
+            }}
             style={{ marginTop: 16 }}
           >
-            Show all destinations
+            Reset filters
           </button>
         </div>
       )}

@@ -3,9 +3,9 @@ import { publishedDestinations } from '../../lib/destinations';
 import { createPageMetadata } from '../../lib/seo';
 
 export const metadata = createPageMetadata({
-  title: 'Explore New Smyrna Beach',
+  title: 'Explore Local Places',
   description:
-    'Search and filter New Smyrna Beach beaches, parks, restaurants, photo spots, nature stops, and family-friendly places.',
+    'Search and filter beaches, parks, historic sites, nature stops, photo spots, and family-friendly places across local communities.',
   path: '/explore',
 });
 
@@ -13,8 +13,8 @@ export default function ExplorePage() {
   return (
     <main className="container">
       <p className="eyebrow">Search and filter</p>
-      <h1>Explore New Smyrna Beach</h1>
-      <p className="lead">Find beaches, parks, restaurants, photo spots, nature stops, and family-friendly places with local photos ready for this launch.</p>
+      <h1>Explore Local Places</h1>
+      <p className="lead">Discover beaches, parks, historic sites, nature stops, photo spots, and family-friendly places across local communities.</p>
       <ExploreFilters destinations={publishedDestinations} />
     </main>
   );

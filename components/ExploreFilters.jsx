@@ -7,16 +7,24 @@ const categories = ['Beach', 'Park', 'Restaurant', 'Photo Spot', 'Family Activit
 
 export default function ExploreFilters({ destinations }) {
   const [query, setQuery] = useState('');
+  const [city, setCity] = useState('All Cities');
   const [category, setCategory] = useState('All');
+
+  const cityOptions = useMemo(() => {
+    return Array.from(new Set(destinations.map((destination) => destination.city))).sort();
+  }, [destinations]);
 
   const filtered = useMemo(() => {
     const text = query.trim().toLowerCase();
     return destinations.filter((destination) => {
+      const cityMatch = city === 'All Cities' || destination.city === city;
       const categoryMatch = category === 'All' || destination.category === category;
       const textMatch = !text || [destination.name, destination.description, destination.city].join(' ').toLowerCase().includes(text);
-      return categoryMatch && textMatch;
+      return cityMatch && categoryMatch && textMatch;
     });
-  }, [category, destinations, query]);
+  }, [category, city, destinations, query]);
+
+  const resultLabel = `${filtered.length} ${filtered.length === 1 ? 'location' : 'locations'} found`;
 
   return (
     <section>
@@ -27,7 +35,19 @@ export default function ExploreFilters({ destinations }) {
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search beaches, parks, restaurants, photo spots..."
         />
-        <div className="chips">
+        <div className="chips" aria-label="City filters">
+          {['All Cities', ...cityOptions].map((item) => (
+            <button
+              className={`chip ${city === item ? 'active' : ''}`}
+              key={item}
+              type="button"
+              onClick={() => setCity(item)}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+        <div className="chips" aria-label="Category filters">
           {['All', ...categories].map((item) => (
             <button
               className={`chip ${category === item ? 'active' : ''}`}
@@ -41,22 +61,23 @@ export default function ExploreFilters({ destinations }) {
         </div>
       </div>
       <div className="result-row">
-        <span>{filtered.length} locations found</span>
-        <span>New Smyrna Beach only</span>
+        <span>{resultLabel}</span>
+        <span>{city === 'All Cities' ? 'All cities' : city}</span>
       </div>
       {filtered.length === 0 ? (
         <div className="side-panel" role="status">
-          <h2>No destinations found</h2>
-          <p>Try a different search or clear the current filters to see every destination.</p>
+          <h2>No places found</h2>
+          <p>Try changing your search, city, or category filters.</p>
           <button
             className="button"
             type="button"
             onClick={() => {
               setQuery('');
+              setCity('All Cities');
               setCategory('All');
             }}
           >
-            Clear filters
+            Reset filters
           </button>
         </div>
       ) : (

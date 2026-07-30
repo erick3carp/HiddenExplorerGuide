@@ -8,7 +8,7 @@ import { createPageMetadata } from '../../lib/seo';
 export const metadata = createPageMetadata({
   title: 'Map',
   description:
-    'Plan New Smyrna Beach stops with the Hidden Explorer Guide interactive map and destination profiles.',
+    'Plan local stops with the Hidden Explorer Guide interactive map and destination profiles.',
   path: '/map',
 });
 
@@ -23,7 +23,7 @@ export default function MapPage() {
       <section className="map-panel">
         <div className="map-panel-header">
           <p className="eyebrow">Explore by map</p>
-          <h2>New Smyrna Beach locations</h2>
+          <h2>Local places on the map</h2>
           <p className="lead">
             Browse curated places from the map and open each profile for photos,
             notes, and visitor details.

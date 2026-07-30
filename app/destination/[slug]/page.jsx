@@ -109,6 +109,7 @@ export default function DestinationPage({ params }) {
   const jsonLd = buildDestinationJsonLd(destination);
   const mapQuery = destination.mapQuery ?? destination.address ?? `${destination.latitude},${destination.longitude}`;
   const googleMapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}`;
+  const featuredAlt = destination.imageAltText?.[destination.featuredImage] ?? destination.name;
 
   return (
     <main>
@@ -120,7 +121,7 @@ export default function DestinationPage({ params }) {
         <DestinationImage
           className="hero-img"
           src={destination.featuredImage}
-          alt={destination.name}
+          alt={featuredAlt}
           fill
           priority
           sizes="100vw"
@@ -161,7 +162,7 @@ export default function DestinationPage({ params }) {
                 <DestinationImage
                   className="gallery-image"
                   src={image}
-                  alt={`${destination.name} photo ${index + 1}`}
+                  alt={destination.imageAltText?.[image] ?? `${destination.name} photo ${index + 1}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
