@@ -36,9 +36,9 @@ export default function HomePage() {
         <div className="hero-overlay" />
         <div className="hero-content">
           <div>
-            <p className="eyebrow">New Smyrna Beach MVP</p>
+            <p className="eyebrow">Local Exploration Guide</p>
             <h1>Hidden Explorer Guide</h1>
-            <p>Authentic destinations, local photography, field notes, and map planning for travelers who want more than the obvious stops.</p>
+            <p>Authentic destinations, original photography, practical details, and map-based planning for travelers and locals who want to explore beyond the obvious stops.</p>
             <div className="actions">
               <Link className="button" href="/explore">Explore locations</Link>
               <Link className="button secondary" href="/map">View map</Link>
