@@ -8,7 +8,8 @@ export function generateStaticParams() {
   return destinations.map((destination) => ({ slug: destination.slug }));
 }
 
-export function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   const destination = getDestination(params.slug);
   if (!destination) {
     return {
@@ -101,7 +102,8 @@ function buildDestinationJsonLd(destination) {
   return jsonLd;
 }
 
-export default function DestinationPage({ params }) {
+export default async function DestinationPage(props) {
+  const params = await props.params;
   const destination = getDestination(params.slug);
   if (!destination) notFound();
 
