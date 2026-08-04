@@ -11,7 +11,7 @@
     "@sentry/nextjs": "^10.59.0",
     "@vercel/speed-insights": "^2.0.0",
     "leaflet": "^1.9.4",
-    "next": "15.5.22",
+    "next": "16.3.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-leaflet": "^5.0.0"
